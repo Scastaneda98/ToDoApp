@@ -5,15 +5,17 @@ class DefaultButton extends StatelessWidget {
 
   Function() onPressed;
   String buttonText;
+  IconData icon;
+  Color color;
 
-  DefaultButton({super.key, required this.onPressed, required this.buttonText});
+  DefaultButton({super.key, required this.onPressed, required this.buttonText, this.icon = Icons.arrow_forward_ios, this.color = primaryColor});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor
+            backgroundColor: color
         ),
         child: Stack(
           children: [
@@ -31,8 +33,8 @@ class DefaultButton extends StatelessWidget {
             Container(
               height: 50,
               alignment: Alignment.centerRight,
-              child: const Icon(
-                Icons.arrow_forward_ios,
+              child: Icon(
+                icon,
                 color: Colors.black,
               ),
             )

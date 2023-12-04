@@ -10,6 +10,7 @@ class LoginResponse {
 
   LoginResponse(this.context, this.viewModel) {
     if(viewModel.response is Success) {
+      viewModel.resetResponse();
       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     } else if (viewModel.response is Loading) {
       buildShowDialog(context);

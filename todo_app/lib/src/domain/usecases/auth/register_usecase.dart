@@ -1,10 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:todo_app/src/domain/models/user_model.dart';
-import 'package:todo_app/src/domain/repository/auth_repository.dart';
-
+import 'package:todo_app/src/domain/models/user/user_model.dart';
+import 'package:todo_app/src/domain/repository/auth/auth_repository.dart';
 @Injectable()
 class RegisterUseCase {
-  AuthRepository _repository;
+  final AuthRepository _repository;
 
   RegisterUseCase(this._repository);
 

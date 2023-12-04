@@ -10,7 +10,7 @@ class RegisterViewModel extends ChangeNotifier{
   Resource _response = Init();
   Resource get response => _response;
 
-  AuthUseCases _authUseCases;
+  final AuthUseCases _authUseCases;
 
   RegisterViewModel(this._authUseCases);
 

@@ -1,4 +1,4 @@
-import 'package:todo_app/src/domain/models/user_model.dart';
+import 'package:todo_app/src/domain/models/user/user_model.dart';
 import 'package:todo_app/src/presentation/utils/validation_item.dart';
 
 class RegisterState {

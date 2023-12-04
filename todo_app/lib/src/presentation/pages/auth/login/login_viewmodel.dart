@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:todo_app/src/domain/usecases/auth/auth_usecases.dart';
 import 'package:todo_app/src/domain/utils/resource.dart';
 import 'package:todo_app/src/presentation/pages/auth/login/login_state.dart';
@@ -7,7 +7,7 @@ import 'package:todo_app/src/presentation/utils/validation_item.dart';
 class LoginViewModel extends ChangeNotifier {
 
   LoginState _state = LoginState();
-  AuthUseCases _authUseCases;
+  final AuthUseCases _authUseCases;
   Resource _response = Init();
 
   LoginState get state => _state;
@@ -47,8 +47,6 @@ class LoginViewModel extends ChangeNotifier {
       notifyListeners();
       _response = await _authUseCases.login.launch(email: _state.email.value, password: _state.password.value);
       notifyListeners();
-
-      print('Data: ${_response}');
     } else {
       print('Invalido');
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/src/presentation/utils/base_color.dart';
 
 buildShowDialog(BuildContext context) {
   return showDialog(
@@ -6,7 +7,9 @@ buildShowDialog(BuildContext context) {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return const Center(
-          child: CircularProgressIndicator()
+          child: CircularProgressIndicator(
+            color: neutralColor,
+          )
         );
       }
   );

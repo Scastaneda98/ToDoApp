@@ -33,7 +33,7 @@ import 'package:todo_app/src/domain/usecases/auth/register_usecase.dart'
     as _i10;
 import 'package:todo_app/src/domain/usecases/auth/user_session_usecase.dart'
     as _i14;
-import 'package:todo_app/src/domain/usecases/tasks/completed_task_usecase.dart'
+import 'package:todo_app/src/domain/usecases/tasks/change_task_status_usecase.dart'
     as _i19;
 import 'package:todo_app/src/domain/usecases/tasks/create_task_usecase.dart'
     as _i20;
@@ -121,8 +121,8 @@ extension GetItInjectableX on _i1.GetIt {
           getUser: gh<_i14.UserSessionUseCase>(),
           logout: gh<_i9.LogoutUseCase>(),
         ));
-    gh.factory<_i19.CompletedTaskUseCase>(
-        () => _i19.CompletedTaskUseCase(gh<_i11.TaskRepository>()));
+    gh.factory<_i19.ChangeTaskStatusUseCase>(
+        () => _i19.ChangeTaskStatusUseCase(gh<_i11.TaskRepository>()));
     gh.factory<_i20.CreateTaskUseCase>(
         () => _i20.CreateTaskUseCase(gh<_i11.TaskRepository>()));
     gh.factory<_i21.DeleteTaskUseCase>(
@@ -135,7 +135,7 @@ extension GetItInjectableX on _i1.GetIt {
           createTask: gh<_i20.CreateTaskUseCase>(),
           getTasks: gh<_i22.GetTasksUseCase>(),
           deleteTask: gh<_i21.DeleteTaskUseCase>(),
-          completedTask: gh<_i19.CompletedTaskUseCase>(),
+          completedTask: gh<_i19.ChangeTaskStatusUseCase>(),
         ));
     gh.factory<_i17.UsersUseCases>(
         () => _i17.UsersUseCases(getUserById: gh<_i23.GetUserByIdUseCase>()));

@@ -54,9 +54,9 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Resource<String>> completedTask(String id) async{
+  Future<Resource<String>> changeTaskStatus(String id, TaskStatus status) async{
     try {
-      await _taskReferences.doc(id).update({'status': TaskStatus.completed.status});
+      await _taskReferences.doc(id).update({'status': status.status});
       return Success('Task deleted successfully');
     } on FirebaseException catch(exception) {
       throw Failure(exception.message ?? 'Missing Error');

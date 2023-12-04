@@ -10,7 +10,6 @@ class TasksListViewModel extends ChangeNotifier {
   TaskUseCases _taskUseCases;
 
   final Map<int, bool> _translationTaskState = {};
-  final Map<int, bool> _taskCompletedState = {};
 
   TasksListViewModel(this._authUseCases,this._taskUseCases);
 
@@ -24,11 +23,9 @@ class TasksListViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool getTaskCompletedState(int index) => _taskCompletedState[index] ?? false;
 
-  completeTask(String id, int index) async{
-    await _taskUseCases.completedTask.launch(id);
-    _taskCompletedState[index] = !(_taskCompletedState[index] ?? false);
+  changeTaskStatus(String id, int index) async{
+    await _taskUseCases.completedTask.launch(id, TaskStatus.completed);
     notifyListeners();
   }
 

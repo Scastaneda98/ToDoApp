@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/src/domain/models/tasks/task_model.dart';
+import 'package:todo_app/src/domain/models/tasks/task_status.dart';
 import 'package:todo_app/src/presentation/pages/tasks/list/tasks_list_viewmodel.dart';
 import 'package:todo_app/src/presentation/utils/base_color.dart';
 
@@ -37,9 +38,9 @@ class TaskListItem extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: InkWell(
                     onTap: () {
-                      viewModel.completeTask(task.id, indexTask);
+                      viewModel.changeTaskStatus(task.id, indexTask);
                     },
-                    child: Icon(viewModel.getTaskCompletedState(indexTask) ? Icons.check_circle : Icons.check_circle_outline),
+                    child: Icon(task.status == TaskStatus.completed.status ? Icons.check_circle : Icons.check_circle_outline),
                   )
               )
             ],

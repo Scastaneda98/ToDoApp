@@ -14,7 +14,7 @@ import 'package:todo_app/src/domain/usecases/auth/login_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/logout_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/register_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/user_session_usecase.dart';
-import 'package:todo_app/src/domain/usecases/tasks/completed_task_usecase.dart';
+import 'package:todo_app/src/domain/usecases/tasks/change_task_status_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/create_task_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/delete_task_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/get_tasks_usecase.dart';
@@ -73,6 +73,6 @@ abstract class AppModule {
       createTask: CreateTaskUseCase(taskRepository),
       getTasks: GetTasksUseCase(taskRepository),
       deleteTask: DeleteTaskUseCase(taskRepository),
-      completedTask: CompletedTaskUseCase(taskRepository)
+      completedTask: ChangeTaskStatusUseCase(taskRepository)
   );
 }

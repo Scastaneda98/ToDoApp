@@ -18,7 +18,7 @@ import 'package:todo_app/src/data/respository/tasks/task_repository_impl.dart'
     as _i12;
 import 'package:todo_app/src/data/respository/user/users_repository_impl.dart'
     as _i16;
-import 'package:todo_app/src/di/app_module.dart' as _i22;
+import 'package:todo_app/src/di/app_module.dart' as _i24;
 import 'package:todo_app/src/di/firebase_service.dart' as _i7;
 import 'package:todo_app/src/domain/repository/auth/auth_repository.dart'
     as _i3;
@@ -33,13 +33,17 @@ import 'package:todo_app/src/domain/usecases/auth/register_usecase.dart'
     as _i10;
 import 'package:todo_app/src/domain/usecases/auth/user_session_usecase.dart'
     as _i14;
-import 'package:todo_app/src/domain/usecases/tasks/create_task_usecase.dart'
+import 'package:todo_app/src/domain/usecases/tasks/completed_task_usecase.dart'
     as _i19;
-import 'package:todo_app/src/domain/usecases/tasks/get_tasks_usecase.dart'
+import 'package:todo_app/src/domain/usecases/tasks/create_task_usecase.dart'
     as _i20;
+import 'package:todo_app/src/domain/usecases/tasks/delete_task_usecase.dart'
+    as _i21;
+import 'package:todo_app/src/domain/usecases/tasks/get_tasks_usecase.dart'
+    as _i22;
 import 'package:todo_app/src/domain/usecases/tasks/task_usecases.dart' as _i13;
 import 'package:todo_app/src/domain/usecases/users/get_user_by_id_usecase.dart'
-    as _i21;
+    as _i23;
 import 'package:todo_app/src/domain/usecases/users/users_usecases.dart' as _i17;
 
 const String _Repositories = 'Repositories';
@@ -117,20 +121,26 @@ extension GetItInjectableX on _i1.GetIt {
           getUser: gh<_i14.UserSessionUseCase>(),
           logout: gh<_i9.LogoutUseCase>(),
         ));
-    gh.factory<_i19.CreateTaskUseCase>(
-        () => _i19.CreateTaskUseCase(gh<_i11.TaskRepository>()));
-    gh.factory<_i20.GetTasksUseCase>(
-        () => _i20.GetTasksUseCase(gh<_i11.TaskRepository>()));
-    gh.factory<_i21.GetUserByIdUseCase>(
-        () => _i21.GetUserByIdUseCase(gh<_i15.UsersRepository>()));
+    gh.factory<_i19.CompletedTaskUseCase>(
+        () => _i19.CompletedTaskUseCase(gh<_i11.TaskRepository>()));
+    gh.factory<_i20.CreateTaskUseCase>(
+        () => _i20.CreateTaskUseCase(gh<_i11.TaskRepository>()));
+    gh.factory<_i21.DeleteTaskUseCase>(
+        () => _i21.DeleteTaskUseCase(gh<_i11.TaskRepository>()));
+    gh.factory<_i22.GetTasksUseCase>(
+        () => _i22.GetTasksUseCase(gh<_i11.TaskRepository>()));
+    gh.factory<_i23.GetUserByIdUseCase>(
+        () => _i23.GetUserByIdUseCase(gh<_i15.UsersRepository>()));
     gh.factory<_i13.TaskUseCases>(() => _i13.TaskUseCases(
-          createTask: gh<_i19.CreateTaskUseCase>(),
-          getTasks: gh<_i20.GetTasksUseCase>(),
+          createTask: gh<_i20.CreateTaskUseCase>(),
+          getTasks: gh<_i22.GetTasksUseCase>(),
+          deleteTask: gh<_i21.DeleteTaskUseCase>(),
+          completedTask: gh<_i19.CompletedTaskUseCase>(),
         ));
     gh.factory<_i17.UsersUseCases>(
-        () => _i17.UsersUseCases(getUserById: gh<_i21.GetUserByIdUseCase>()));
+        () => _i17.UsersUseCases(getUserById: gh<_i23.GetUserByIdUseCase>()));
     return this;
   }
 }
 
-class _$AppModule extends _i22.AppModule {}
+class _$AppModule extends _i24.AppModule {}

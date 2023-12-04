@@ -14,12 +14,12 @@ class TaskTranslated {
   });
 
   factory TaskTranslated.fromJson(Map<String, dynamic> json) => TaskTranslated(
-    title: json["title"],
-    description: json["description"],
+    title: json["titleEnglish"],
+    description: json["descriptionEnglish"],
   );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "description": description,
+    "titleEnglish": title,
+    "descriptionEnglish": description,
   };
 }

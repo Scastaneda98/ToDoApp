@@ -35,7 +35,7 @@ class TasksListPage extends StatelessWidget {
           }
           final tasks = response as Success<List<TaskModel>>;
           return ListView.builder(
-            itemBuilder: (context, index) => TaskListItem(tasks.data[index]),
+            itemBuilder: (context, index) => TaskListItem(tasks.data[index],viewModel,index),
             itemCount: tasks.data.length,
           );
         }),

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'task_translated_model.dart';
+
 TaskModel taskModelFromJson(String str) => TaskModel.fromJson(json.decode(str));
 
 String taskModelToJson(TaskModel data) => json.encode(data.toJson());
@@ -11,6 +13,7 @@ class TaskModel {
   String description;
   String status;
   String date;
+  TaskTranslated? taskTranslated;
 
   TaskModel({
     this.id = '',
@@ -18,7 +21,8 @@ class TaskModel {
     required this.title,
     required this.description,
     this.status = '',
-    this.date = ''
+    this.date = '',
+    this.taskTranslated
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
@@ -28,6 +32,7 @@ class TaskModel {
     description: json["description"] ?? '',
     status: json["status"] ?? '',
     date: json["date"] ?? '',
+    taskTranslated: TaskTranslated.fromJson(json['taskEnglish'])
   );
 
   Map<String, dynamic> toJson() => {

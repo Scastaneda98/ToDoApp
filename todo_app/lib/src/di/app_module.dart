@@ -14,7 +14,9 @@ import 'package:todo_app/src/domain/usecases/auth/login_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/logout_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/register_usecase.dart';
 import 'package:todo_app/src/domain/usecases/auth/user_session_usecase.dart';
+import 'package:todo_app/src/domain/usecases/tasks/completed_task_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/create_task_usecase.dart';
+import 'package:todo_app/src/domain/usecases/tasks/delete_task_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/get_tasks_usecase.dart';
 import 'package:todo_app/src/domain/usecases/tasks/task_usecases.dart';
 import 'package:todo_app/src/domain/usecases/users/get_user_by_id_usecase.dart';
@@ -69,6 +71,8 @@ abstract class AppModule {
   @injectable
   TaskUseCases get taskUSeCases => TaskUseCases(
       createTask: CreateTaskUseCase(taskRepository),
-      getTasks: GetTasksUseCase(taskRepository)
+      getTasks: GetTasksUseCase(taskRepository),
+      deleteTask: DeleteTaskUseCase(taskRepository),
+      completedTask: CompletedTaskUseCase(taskRepository)
   );
 }
